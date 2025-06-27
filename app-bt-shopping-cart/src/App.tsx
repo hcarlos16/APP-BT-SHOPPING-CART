@@ -22,13 +22,13 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home user={user} setUser={setUser} cart={cart} setCart={setCart}/>} /> {/* Página principal */}
-        <Route path="/login" element={<Login setUser={setUser} />}/> {/* Página de login */}
-        <Route path="/register" element={<Register />} /> {/* Página de login */}
-        <Route path="/productos" element={<Producto />} /> {/* Página de login */}
-        <Route path="/crear-producto" element={<CrearProducto />} /> {/* Página de login */}
-        <Route path="/ordenes" element={<Ordenes />} /> {/* Página de login */}
-        <Route path="*" element={<NotFound />} /> {/* Ruta no encontrada */}
+        <Route path="/" element={<Home user={user} setUser={setUser} cart={cart} setCart={setCart}/>} /> 
+        <Route path="/login" element={<Login setUser={setUser} />}/> 
+        <Route path="/register" element={<Register />} /> 
+        <Route path="/productos" element={<Producto />} /> 
+        <Route path="/crear-producto" element={<CrearProducto />} /> 
+        <Route path="/ordenes" element={<Ordenes />} /> 
+        <Route path="*" element={<NotFound />} /> 
         <Route path="/cart" element={<Cart onClose={toggleCart} cart={cart} setCart = {setCart} />} />
       </Routes>
     </Router>

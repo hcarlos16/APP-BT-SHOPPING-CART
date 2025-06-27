@@ -8,7 +8,7 @@ function Producto() {
   const [message, setMessage] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  // Función para obtener el listado de productos
+ 
   useEffect(() => {
     const fetchProductos = async () => {
       try {
@@ -27,7 +27,7 @@ function Producto() {
     fetchProductos();
   }, []);
 
-  // Función para eliminar un producto
+ 
   const handleDeleteProducto = async (id: number) => {
     try {
       const accessToken = localStorage.getItem("access_token");
@@ -57,19 +57,19 @@ function Producto() {
 
   return (
     <Box sx={{ padding: "2rem", display: "flex", flexDirection: "column", height: "100vh" }}>
-      {/* Título */}
+     
       <Typography variant="h4" sx={{ marginBottom: "1rem", textAlign: "center" }}>
         Gestión de productos
       </Typography>
 
-      {/* Mensaje de éxito */}
+     
       {message && (
         <Alert severity="success" sx={{ marginBottom: "1rem" }}>
           {message}
         </Alert>
       )}
 
-      {/* Tabla de productos */}
+      
       <TableContainer
         sx={{
           flex: 1, // Hace que la tabla ocupe el espacio disponible
@@ -107,7 +107,7 @@ function Producto() {
         </Table>
       </TableContainer>
 
-      {/* Botones */}
+     
       <Box sx={{ display: "flex", justifyContent: "center", gap: "1rem", marginTop: "1rem" }}>
         <Button variant="contained" color="secondary" onClick={() => navigate("/")}>
           Salir

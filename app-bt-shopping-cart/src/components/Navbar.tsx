@@ -13,8 +13,8 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'; // Importa el ícono de carrito
-import Cart from '../components/Cart'; // Importa el componente Cart
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'; 
+import Cart from '../components/Cart'; 
 
 
 const pages = ['Home', 'Productos', 'Ordenes'];
@@ -23,7 +23,7 @@ function Navbar({ user, setUser, cart, setCart }: { user: any; setUser: (user: a
 
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
-    const [isCartOpen, setIsCartOpen] = React.useState(false); // Estado para controlar la visibilidad del carrito
+    const [isCartOpen, setIsCartOpen] = React.useState(false); 
 
     const navigate = useNavigate();
 
@@ -43,12 +43,10 @@ function Navbar({ user, setUser, cart, setCart }: { user: any; setUser: (user: a
         setAnchorElUser(null);
     };
 
-    const handleCartClick = () => {
-        navigate('/cart'); // Redirige a la ruta "/cart"
-    };
+   
 
     const toggleCart = () => {
-        setIsCartOpen((prev) => !prev); // Alterna la visibilidad del carrito
+        setIsCartOpen((prev) => !prev); 
     };
 
     const filteredSettings = user ? ['Crear usuario', 'Salir'] : ['Login', 'Crear usuario'];
@@ -166,7 +164,7 @@ function Navbar({ user, setUser, cart, setCart }: { user: any; setUser: (user: a
                             ))}
                         </Box>
                         <Box sx={{ flexGrow: 0 }}>
-                            {user && ( // Renderiza el carrito solo si hay un usuario logueado
+                            {user && ( 
                                 <Tooltip title="Carrito">
                                     <IconButton onClick={toggleCart} sx={{ color: 'white' }}>
                                         <ShoppingCartIcon />
@@ -176,9 +174,9 @@ function Navbar({ user, setUser, cart, setCart }: { user: any; setUser: (user: a
                             <Tooltip title="Open settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                     {user ? (
-                                        <Typography sx={{ color: 'white' }}>{user.nombre}</Typography> // Muestra el nombre del usuario
+                                        <Typography sx={{ color: 'white' }}>{user.nombre}</Typography> 
                                     ) : (
-                                        <Avatar alt="Remy Sharp" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIrxPSJI-uVlJtW6uLDwKFu13Ys9rqfpjo_w&s" /> // Muestra el avatar por defecto
+                                        <Avatar alt="Remy Sharp" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIrxPSJI-uVlJtW6uLDwKFu13Ys9rqfpjo_w&s" /> 
                                     )}
                                 </IconButton>
                             </Tooltip>
@@ -204,14 +202,14 @@ function Navbar({ user, setUser, cart, setCart }: { user: any; setUser: (user: a
                                         onClick={() => {
                                             handleCloseUserMenu();
                                             if (setting === 'Login') {
-                                                navigate('/login'); // Redirige al componente Login
+                                                navigate('/login'); 
                                             } else if (setting === 'Crear usuario') {
-                                                navigate('/register'); // Redirige al componente Register
+                                                navigate('/register');
                                             } else if (setting === 'Salir') {
                                                 localStorage.removeItem('access_token');
-                                                localStorage.removeItem('user_id');  // Elimina la clave access_token del localStorage
-                                                navigate('/'); // Redirige al Home
-                                                setUser(null); // Limpia el estado del usuario
+                                                localStorage.removeItem('user_id');  
+                                                navigate('/'); 
+                                                setUser(null); 
                                             }
                                         }}
                                     >
@@ -224,7 +222,7 @@ function Navbar({ user, setUser, cart, setCart }: { user: any; setUser: (user: a
                 </Container>
             </AppBar>
 
-            {/* Renderiza el carrito si está abierto */}
+            
             {isCartOpen && (
                 <Box
                     sx={{

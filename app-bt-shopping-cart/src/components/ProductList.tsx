@@ -8,9 +8,9 @@ function ProductList({
   cart: any[];
   setCart: (cart: any[]) => void;
 }) {
-  const [products, setProducts] = useState<any[]>([]); // Estado para almacenar los productos
+  const [products, setProducts] = useState<any[]>([]); 
 
-  // Cargar productos desde la API
+  
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -23,7 +23,7 @@ function ProductList({
 
         if (response.ok) {
           const data = await response.json();
-          setProducts(data); // Actualiza el estado con los productos obtenidos
+          setProducts(data); 
         } else {
           console.error("Error al cargar los productos:", response.statusText);
         }
@@ -49,21 +49,21 @@ function ProductList({
       sx={{
         display: "flex",
         flexDirection: "column",
-        height: "100vh", // Ocupa toda la altura de la pantalla
+        height: "100vh", 
       }}
     >
-      {/* Texto siempre visible */}
+     
       <Box sx={{ flexShrink: 0, padding: "1rem", backgroundColor: "#f5f5f5" }}>
         <Typography variant="h4" sx={{ textAlign: "center" }}>
           Catálogo de Productos
         </Typography>
       </Box>
 
-      {/* Contenedor de productos con scroll */}
+      
       <Box
         sx={{
-          flex: 1, // Hace que el listado ocupe el espacio restante
-          overflowY: "auto", // Habilita el scroll vertical
+          flex: 1, 
+          overflowY: "auto", 
           padding: "1rem",
         }}
       >

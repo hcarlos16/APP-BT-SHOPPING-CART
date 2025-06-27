@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box, Typography, TextField, Button, Alert } from "@mui/material";
-import { useNavigate } from "react-router-dom"; // Importa el hook useNavigate
+import { useNavigate } from "react-router-dom"; 
 
 function CrearProducto() {
   const [formData, setFormData] = useState({
@@ -10,9 +10,9 @@ function CrearProducto() {
     precio: "",
   });
   const [message, setMessage] = useState<string | null>(null);
-  const navigate = useNavigate(); // Inicializa el hook useNavigate
+  const navigate = useNavigate(); 
 
-  // Maneja los cambios en los inputs
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -21,7 +21,7 @@ function CrearProducto() {
     }));
   };
 
-  // Valida que el precio solo permita números decimales
+  
   const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     if (/^\d*\.?\d*$/.test(value)) {
@@ -32,24 +32,24 @@ function CrearProducto() {
     }
   };
 
-  // Maneja el envío del formulario
+  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const accessToken = localStorage.getItem("access_token"); // Obtiene el token del localStorage
+    const accessToken = localStorage.getItem("access_token"); 
 
     const body = {
       imagen: formData.imagen,
       descripcion: formData.descripcion,
       nombre: formData.nombre,
-      precio: parseFloat(formData.precio), // Convierte el precio a número
+      precio: parseFloat(formData.precio), 
     };
 
     try {
       const response = await fetch("http://localhost:8080/api/productos", {
         method: "POST",
         headers: {
-          "Authorization": `Bearer ${accessToken}`, // Agrega el encabezado Authorization
+          "Authorization": `Bearer ${accessToken}`, 
           "Content-Type": "application/json",
         },
         body: JSON.stringify(body),
@@ -57,7 +57,7 @@ function CrearProducto() {
 
       if (response.ok) {
         setMessage("Producto creado exitosamente.");
-        setFormData({ imagen: "", descripcion: "", nombre: "", precio: "" }); // Limpia el formulario
+        setFormData({ imagen: "", descripcion: "", nombre: "", precio: "" }); 
       } else {
         setMessage("Error al crear el producto.");
       }
@@ -66,7 +66,7 @@ function CrearProducto() {
       setMessage("Error en la petición.");
     }
 
-    // Limpia el mensaje después de 3 segundos
+    
     setTimeout(() => {
       setMessage(null);
     }, 3000);
@@ -74,19 +74,19 @@ function CrearProducto() {
 
   return (
     <Box sx={{ padding: "2rem", maxWidth: "600px", margin: "0 auto" }}>
-      {/* Título */}
+      
       <Typography variant="h4" sx={{ marginBottom: "2rem", textAlign: "center" }}>
         Crear Producto
       </Typography>
 
-      {/* Mensaje de éxito o error */}
+      
       {message && (
         <Alert severity={message.includes("exitosamente") ? "success" : "error"} sx={{ marginBottom: "1rem" }}>
           {message}
         </Alert>
       )}
 
-      {/* Formulario */}
+      
       <form onSubmit={handleSubmit}>
         <TextField
           label="Nombre del producto"

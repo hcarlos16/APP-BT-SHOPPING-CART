@@ -61,7 +61,7 @@ function Cart({ onClose, cart, setCart }: CartProps) {
 
         setTimeout(() => {
           setCart([]);
-          onClose(); // Oculta el componente Cart después de 3 segundos
+          onClose(); 
 
         }, 3000);
 
@@ -77,19 +77,19 @@ function Cart({ onClose, cart, setCart }: CartProps) {
   return (
     <Box
       sx={{
-        position: "fixed", // Posiciona el carrito en relación a la ventana
-        top: "50%", // Centra verticalmente
-        left: "50%", // Centra horizontalmente
-        transform: "translate(-50%, -50%)", // Ajusta el punto de referencia al centro
-        width: "90%", // Tamaño fijo responsive
-        maxWidth: "800px", // Limita el ancho máximo
-        height: "70vh", // Tamaño fijo para la altura
+        position: "fixed", 
+        top: "50%", 
+        left: "50%", 
+        transform: "translate(-50%, -50%)", 
+        width: "90%", 
+        maxWidth: "800px", 
+        height: "70vh", 
         padding: "2rem",
-        backgroundColor: "rgba(255, 255, 255, 0.94)", // Fondo blanco con transparencia
-        boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)", // Sombra para efecto flotante
-        borderRadius: "16px", // Bordes curvos
-        border: "1px solid #ddd", // Bordes delgados
-        overflow: "hidden", // Elimina el scroll en el contenedor principal
+        backgroundColor: "rgba(255, 255, 255, 0.94)", 
+        boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)", 
+        borderRadius: "16px", 
+        border: "1px solid #ddd", 
+        overflow: "hidden", 
       }}
     >
       <Typography variant="h6" sx={{ marginBottom: "1rem", textAlign: "center" }}>
@@ -99,8 +99,8 @@ function Cart({ onClose, cart, setCart }: CartProps) {
         <>
           <TableContainer
             sx={{
-              maxHeight: "50vh", // Limita la altura de la tabla para habilitar el scroll
-              overflowY: "auto", // Habilita el scroll vertical en la tabla
+              maxHeight: "50vh", 
+              overflowY: "auto", 
             }}
           >
             <Table>
@@ -132,7 +132,7 @@ function Cart({ onClose, cart, setCart }: CartProps) {
           <Typography
             variant="body1"
             sx={{
-              fontWeight: "bold", // Texto en negritas
+              fontWeight: "bold", 
               marginTop: "1rem",
               textAlign: "center",
             }}
@@ -154,15 +154,15 @@ function Cart({ onClose, cart, setCart }: CartProps) {
         <Button
           variant="contained"
           color="secondary"
-          onClick={onClose} // Oculta el componente al hacer clic
+          onClick={onClose} 
         >
           Salir
         </Button>
-        {cart.length > 0 && ( // Renderiza el botón "Guardar" solo si hay elementos en el carrito
+        {cart.length > 0 && ( 
           <Button
             variant="contained"
             color="primary"
-            onClick={handleSaveToDatabase} // Guarda la información en la base de datos
+            onClick={handleSaveToDatabase} 
           >
             Guardar
           </Button>
