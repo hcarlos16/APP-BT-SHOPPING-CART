@@ -12,7 +12,7 @@ function Home({ user,setUser, cart,
           if (!user) {
             const userId = localStorage.getItem("user_id");
             
-            if (userId) {
+            if (userId ) {
               try {
                 const response = await fetch(`http://localhost:8080/api/usuarios/${userId}`);
                 if (response.ok) {

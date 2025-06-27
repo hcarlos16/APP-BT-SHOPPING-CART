@@ -17,7 +17,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'; // Importa el Ã
 import Cart from '../components/Cart'; // Importa el componente Cart
 
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['Home', 'Productos', 'Ordenes'];
 
 function Navbar({ user, setUser, cart, setCart }: { user: any; setUser: (user: any) => void; cart: any[]; setCart: (cart: any[]) => void; }) {
 
@@ -28,6 +28,7 @@ function Navbar({ user, setUser, cart, setCart }: { user: any; setUser: (user: a
     const navigate = useNavigate();
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+        console.log("paso");
         setAnchorElNav(event.currentTarget);
     };
     const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -104,7 +105,15 @@ function Navbar({ user, setUser, cart, setCart }: { user: any; setUser: (user: a
                                 sx={{ display: { xs: 'block', md: 'none' } }}
                             >
                                 {pages.map((page) => (
-                                    <MenuItem key={page} onClick={handleCloseNavMenu}>
+
+                                    <MenuItem
+                                        key={page}
+                                        onClick={() => {
+                                            
+                                            handleCloseNavMenu();
+                                            
+                                        }}
+                                    >
                                         <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
                                     </MenuItem>
                                 ))}
@@ -131,13 +140,29 @@ function Navbar({ user, setUser, cart, setCart }: { user: any; setUser: (user: a
                         </Typography>
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                             {pages.map((page) => (
-                                <Button
-                                    key={page}
-                                    onClick={handleCloseNavMenu}
-                                    sx={{ my: 2, color: 'white', display: 'block' }}
-                                >
-                                    {page}
-                                </Button>
+                               
+                               <span>
+                               <Button
+                                key={page}
+                                onClick={() => {
+                                  
+                                  handleCloseNavMenu();
+                                  if (page === 'Home') {
+                                    navigate(`/`);
+                                } else if (page === 'Productos') {
+                                    
+                                    navigate(`/productos`);
+                                }else if (page === 'Ordenes') {
+                                    
+                                    navigate(`/ordenes`);
+                                }
+                                }}
+                                disabled={page === "Ordenes" && !localStorage.getItem("user_id")}
+                                sx={{ my: 2, color: 'white', display: 'block' }}
+                              >
+                                {page}
+                              </Button>
+                              </span>
                             ))}
                         </Box>
                         <Box sx={{ flexGrow: 0 }}>
@@ -214,7 +239,7 @@ function Navbar({ user, setUser, cart, setCart }: { user: any; setUser: (user: a
                         overflowY: 'auto',
                     }}
                 >
-                    <Cart onClose={toggleCart} cart={cart} setCart = {setCart}/>
+                    <Cart onClose={toggleCart} cart={cart} setCart={setCart} />
                 </Box>
             )}
         </>
