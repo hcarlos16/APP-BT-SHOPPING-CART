@@ -21,6 +21,28 @@ Aplicación web de carrito de compras construida con **React** en el frontend y 
 
 ---
 
-## 📂 Estructura del proyecto
 
+---
 
+## ⚙️ Cómo ejecutar el proyecto
+
+### 🔧 Requisitos
+
+- Node.js ≥ 18
+- Java ≥ 17
+- Maven o Gradle
+- MySQL (si no usas H2)
+
+---
+
+### 🖥️ 1. Ejecutar el Backend
+
+```bash
+cd backend
+./mvnw spring-boot:run
+
+### 🖥️ 2. Ejecutar el Frontend
+
+cd frontend
+npm install
+npm run dev
